@@ -4,6 +4,7 @@ from settings import *
 class Button():
 	def __init__(self, x, y, image):
 		self.image = image
+		# defines the rectangle of the button
 		self.rect = self.image.get_rect()
 		self.rect.x = x
 		self.rect.y = y
@@ -12,7 +13,7 @@ class Button():
 	def draw(self):
 		action = False
 
-		# get cursor's position
+		# gets  the cursor's position
 		mousePosition = pygame.mouse.get_pos()
 
 		# check mouseover and clicked conditions
@@ -20,17 +21,18 @@ class Button():
 			if pygame.mouse.get_pressed()[0] == 1 and self.clicked == False:
 				action = True
 				self.clicked = True
-
+				
+		# checks if the left mouse button is not being pressed
 		if pygame.mouse.get_pressed()[0] == 0:
 			self.clicked = False
 
-		# draw button onto screen
+		# draws buttons onto the screen
 		screen.blit(self.image, self.rect)
 
 		return action
 
 
-# create buttons
+# create buttons along with button coordinates on screen
 restartButton = Button(screenWidth // 2 - 60, screenHeight // 2 - 21, restartImage)
 startButton = Button(screenWidth // 2 - 130, screenHeight // 2 - 270, startImage)
 optionButton = Button(screenWidth // 2 - 170, screenHeight // 2 - 55, optionsImage)

@@ -1,4 +1,7 @@
 import pygame
+from pygame import mixer
+pygame.mixer.pre_init(44100, -16, 2, 512)
+mixer.init()
 
 # load backgrounds
 backgroundImage1 = pygame.image.load('images/background/dungeon.png')
@@ -16,6 +19,10 @@ brickImage1 = pygame.image.load('images/blocks/brick.png')
 brickImage = pygame.transform.scale(brickImage1, (50, 50))
 blackBrickImage1 = pygame.image.load('images/blocks/dark brick.png')
 blackBrickImage = pygame.transform.scale(blackBrickImage1, (50, 50))
+doorwayImage1 = pygame.image.load('images/blocks/doorway.png')
+doorwayImage = pygame.transform.scale(doorwayImage1, (50, 75))
+coinImage1 = pygame.image.load('images/blocks/coin.png')
+coinImage = pygame.transform.scale(coinImage1, (24, 30))
 
 # load enemies
 monsterImage1 = pygame.image.load('images/enemies/monster.png')
@@ -48,3 +55,10 @@ thirtyImage = pygame.image.load('images/buttons/30.png')
 sixtyImage = pygame.image.load('images/buttons/60.png')
 oneTwentyImage = pygame.image.load('images/buttons/120.png')
 twoFortyImage = pygame.image.load('images/buttons/240.png')
+
+# load sounds
+coinPickUp_sfx = pygame.mixer.Sound('sounds/coinPickUp.wav')
+coinPickUp_sfx.set_volume(0.5)
+jump_sfx = pygame.mixer.Sound('sounds/jump.wav')
+gameOver_sfx = pygame.mixer.Sound('sounds/gameOver.mp3')
+gameOver_sfx.set_volume(2)

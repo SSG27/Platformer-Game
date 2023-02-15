@@ -82,6 +82,10 @@ class Player:
             if pygame.sprite.spritecollide(self, spikeGroup, False):
                 gameOver = -1
 
+            # check for collision with doorway
+            if pygame.sprite.spritecollide(self, doorwayGroup, False):
+                gameOver = 1
+
             # this adds the values of 'dx and 'dy' to the player's coordinates
             self.rect.x += dx
             self.rect.y += dy

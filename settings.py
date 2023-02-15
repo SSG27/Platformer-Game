@@ -1,5 +1,8 @@
 import pygame
 import sys
+from pygame import mixer
+pygame.mixer.pre_init(44100, -16, 2, 512)
+mixer.init()
 
 # this initialises pygame so that it is ready to run
 pygame.init()
@@ -26,10 +29,25 @@ menuState = 'start'
 
 # define text font and colour
 font = pygame.font.SysFont("arialblack", 20)
+gameOverFont = pygame.font.SysFont('Bauhaus 93', 100)
 white = (255, 255, 255)
-
+blue = (0, 237, 255)
 
 # function to draw text on screen
 def drawText(text, font, white, x, y):
   image = font.render(text, True, white)
   screen.blit(image, (x, y))
+
+# define variables for death counter
+deathCounter = 0
+loopCounter = 0
+
+# define variables for levels
+currentLevel = 1
+
+# plays background music track called 'backgroundMusic.mp3'
+pygame.mixer.music.load('sounds/backgroundMusic.mp3')
+pygame.mixer.music.play(-1, 0.0, 0)
+
+# define score
+score = 0
